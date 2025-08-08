@@ -10,8 +10,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ✅ Test Route
+app.get("/", (req, res) => {
+  res.send("Feedback API is running ✅");
+});
+
+// ✅ Feedback Routes
 app.use("/api/feedback", feedbackRoutes);
 
+// ✅ MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
